@@ -3466,6 +3466,7 @@ MonoBehaviour:
   - {fileID: 982791015}
   - {fileID: 982791014}
   moveSpeed: 20
+  spawnOutsideOffset: 2
   destroyOverflowEnemy: 1
 --- !u!4 &2112344559
 Transform:

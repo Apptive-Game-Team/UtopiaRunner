@@ -15,7 +15,7 @@ MonoBehaviour:
   stageWaveInfos:
   - worldNum: 0
     stageNum: 0
-    stageWaveData: {fileID: 11400000, guid: d63a18ba61ac5ae43a2def3495db3494, type: 2}
+    stageWaveData: {fileID: 11400000, guid: e8e4ffc1934293b4da4d897c5f0d55c3, type: 2}
   - worldNum: 0
     stageNum: 1
     stageWaveData: {fileID: 11400000, guid: 6c29d0f33cc1c5843856ed7f0dc64b18, type: 2}
