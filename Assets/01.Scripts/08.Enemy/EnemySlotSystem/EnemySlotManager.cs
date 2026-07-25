@@ -9,6 +9,9 @@ public class EnemySlotManager : MonoBehaviour
     [Header("Move Option")]
     [SerializeField] private float moveSpeed = 20f;
 
+    [Header("Spawn Option")]
+    [SerializeField] private float spawnOutsideOffset = 2f;
+
     [Header("Overflow Option")]
     [SerializeField] private bool destroyOverflowEnemy = true;
 
@@ -75,8 +78,11 @@ public class EnemySlotManager : MonoBehaviour
         int spawnIndex = isSpawnByBoss ? 1 : 0;
         EnemySlot spawnSlot = laneSlots[spawnIndex];
 
-        Vector3 spawnPosition =
+        Vector3 targetPosition =
             spawnSlot.transform.position + GetPrefabSlotOffset(enemyPrefab);
+
+        Vector3 spawnPosition =
+            GetRightOutsideSpawnPosition(targetPosition);
 
         GameObject enemyObj = Instantiate(
             enemyPrefab,
@@ -103,6 +109,30 @@ public class EnemySlotManager : MonoBehaviour
         }
 
         return enemyObj;
+    }
+
+    private Vector3 GetRightOutsideSpawnPosition(Vector3 targetPosition)
+    {
+        Camera mainCamera = Camera.main;
+
+        if (mainCamera == null)
+        {
+            return targetPosition + Vector3.right * spawnOutsideOffset;
+        }
+
+        float distanceFromCamera =
+            Mathf.Abs(mainCamera.transform.position.z - targetPosition.z);
+
+        Vector3 rightEdgeWorldPosition =
+            mainCamera.ViewportToWorldPoint(
+                new Vector3(1f, 0.5f, distanceFromCamera)
+            );
+
+        return new Vector3(
+            rightEdgeWorldPosition.x + spawnOutsideOffset,
+            targetPosition.y,
+            targetPosition.z
+        );
     }
 
     private void PushLineLeft(EnemyLane lane)

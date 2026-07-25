@@ -113,7 +113,6 @@ public class WaveManager : MonoBehaviour
 
         if (stageWaveData == null)
         {
-            Debug.LogError("StageWaveData�� �����ϴ�. ���̺긦 ������ �� �����ϴ�.");
             return;
         }
 
@@ -141,7 +140,6 @@ public class WaveManager : MonoBehaviour
     {
         if (enemySlotManager == null)
         {
-            Debug.LogError("EnemySlotManager�� ������� �ʾҽ��ϴ�.");
             return;
         }
 
@@ -185,10 +183,32 @@ public class WaveManager : MonoBehaviour
             earnedEveMemory = EveMemoryManager.Instance.ApplyStageClearMemory();
         }
 
-        UnlockCharacterAndWeapon(StageManager.Instance.selectedWorldNum, StageManager.Instance.selectedStageNum);
+        MarkCurrentStageCleared();
+
+        UnlockCharacterAndWeapon(
+            StageManager.Instance.selectedWorldNum,
+            StageManager.Instance.selectedStageNum
+        );
+
         ShowClearPanel(earnedGold, earnedEveMemory);
 
-        Debug.Log("���� Ŭ����");
+        Debug.Log("스테이지 클리어");
+    }
+
+    private void MarkCurrentStageCleared()
+    {
+        if (GameManager.Instance == null)
+            return;
+
+        WorldNum worldNum = StageManager.Instance.selectedWorldNum;
+        StageNum stageNum = StageManager.Instance.selectedStageNum;
+
+        GameManager.Instance.playerData
+            .clearedStages[(int)worldNum]
+            .stages[(int)stageNum]
+            .isCleared = true;
+
+        GameManager.Instance.SaveGame();
     }
 
     private void UnlockCharacterAndWeapon(WorldNum worldNum, StageNum stageNum)
@@ -236,12 +256,12 @@ public class WaveManager : MonoBehaviour
 
         if (earnedGoldText != null)
         {
-            earnedGoldText.text = $"ȹ�� ���: {earnedGold}";
+            earnedGoldText.text = $"획득 골드: {earnedGold}";
         }
 
         if (earnedEveMemoryText != null)
         {
-            earnedEveMemoryText.text = $"ȹ�� �̺��� ���: {earnedEveMemory}";
+            earnedEveMemoryText.text = $"이브의 기억: {earnedEveMemory}";
         }
 
         Time.timeScale = 0f;

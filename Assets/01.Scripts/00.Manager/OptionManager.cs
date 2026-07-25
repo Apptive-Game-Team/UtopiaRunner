@@ -29,6 +29,22 @@ namespace _01.Scripts._00.Manager
             Time.timeScale = 1f;
         }
 
+        private void OnEnable()
+        {
+            SceneManager.sceneLoaded += OnSceneLoaded;
+        }
+
+        private void OnDisable()
+        {
+            SceneManager.sceneLoaded -= OnSceneLoaded;
+        }
+
+        private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+        {
+            UpdateLobbyButtonState();
+            UpdatePauseState();
+        }
+
         public void OnClickOptionButton()
         {
             if (optionPanel.activeSelf)

@@ -1779,6 +1779,8 @@ MonoBehaviour:
         isCleared: 0
       - stageNum: 5
         isCleared: 0
+    unlockedCharacters: 010100000000
+    unlockedWeapons: 010000000000
     characterGrade: 000000000000000000000000000000000000000000000000
     weaponGrade: 00000000000000000000000000000000000000000000000000000000
   selectedData:
@@ -6197,7 +6199,7 @@ MonoBehaviour:
   optionPanel: {fileID: 8579118274882348654}
   outPanel: {fileID: 5793804038210517947}
   lobbyConfirmPanel: {fileID: 6461515748814571675}
-  lobbyButton: {fileID: 0}
+  lobbyButton: {fileID: 7941445125881262602}
 --- !u!1 &5916195772434570749
 GameObject:
   m_ObjectHideFlags: 0
