@@ -392,7 +392,7 @@ MonoBehaviour:
   energyBallSpeed: 12
   energyBallArriveDelay: 0.5
   centerExplosionPrefab: {fileID: 1501075203370551340, guid: f29c954a0e287384b84546bf1e7494a8, type: 3}
-  outerExplosionPrefab: {fileID: 2624378441017846333, guid: 7a817697c46ced44ca2ec45338f0adb3, type: 3}
+  outerExplosionPrefab: {fileID: 51667930778893328, guid: 7016f9272fcaf7c4fb12f129c3419923, type: 3}
   explosionDuration: 1
   phase2HpRatio: 0.5
   delayBetweenPatterns: 1
