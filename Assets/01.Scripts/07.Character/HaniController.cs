@@ -1,4 +1,6 @@
 using System.Collections;
+using _01.Scripts._00.Manager;
+using _01.Scripts._05.Utility;
 using _01.Scripts._06.Weapon;
 using UnityEngine;
 
@@ -65,9 +67,11 @@ namespace _01.Scripts._07.Character
 
         private IEnumerator SetEnemySlow(GameObject enemy, float time)
         {
-            // todo : 적 슬로우 유발 enemy.GetComponent<EnemyController>().
-            yield return new WaitForSeconds(time);
-            // todo : 적 속도 정상화
+            float originSpeed = ValueFormula.enemyAttackSpeed;
+            ValueFormula.SetEnemyAttackSpeed(ValueFormula.enemyAttackSpeed + originSpeed);
+            yield return new WaitForSeconds(ValueFormula.GetCharacterSkillValues(
+                characterInfo, GameManager.Instance.playerData.characterGrade[characterInfo.id])[0]);
+            ValueFormula.SetEnemyAttackSpeed(ValueFormula.enemyAttackSpeed - originSpeed);
         }
     }
 }

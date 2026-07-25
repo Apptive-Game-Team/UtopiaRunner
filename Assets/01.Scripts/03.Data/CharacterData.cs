@@ -1,5 +1,7 @@
 using System;
 using System.Collections.Generic;
+using _01.Scripts._00.Manager;
+using _01.Scripts._05.Utility;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -28,7 +30,7 @@ namespace _01.Scripts._03.Data
                 hpList = new List<int>(hpList),
                 apList = new List<int>(apList),
                 story = story,
-                skillDescription = skillDescription,
+                skillDescription = ValueFormula.GetFormattedSkillDescription(this, GameManager.Instance.playerData.characterGrade[id]),
                 skillValue = new List<int>(skillValue),
                 recommendedWeapon = recommendedWeapon
             };

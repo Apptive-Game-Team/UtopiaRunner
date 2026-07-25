@@ -21,8 +21,8 @@ MonoBehaviour:
     story: "\uC774\uCE74\uB8E8\uC2A4\uB294 \uC5D0\uB374\uC758 \uACBD\uCC30\uC774\uBA70..
       [\uB354\uBCF4\uAE30]"
     skillDescription: "\uC2AC\uB77C\uC774\uB4DC \uBC0F \uC810\uD504 \uC2DC \uBB34\uAE30
-      \uC2A4\uD0AC \uB0A8\uC740 \uCFE8\uD0C0\uC784 10% \uAC10\uC18C"
-    skillValue: 0100000002000000030000000400000005000000
+      \uC2A4\uD0AC \uB0A8\uC740 \uCFE8\uD0C0\uC784 {0}% \uAC10\uC18C"
+    skillValue: 0a000000
     recommendedWeapon: {fileID: 21300000, guid: 62de793acd6d10741bb1ed990d8655af, type: 3}
   - id: 1
     name: "\uC774\uBE0C"
@@ -31,9 +31,9 @@ MonoBehaviour:
     apList: 0100000002000000030000000400000005000000
     story: "\uC774\uBE0C\uB294 \uC0AC\uC2E4 \uB0A8\uC790\uC784."
     skillDescription: "\uD0DC\uADF8\uB418\uC5B4 \uB098\uC640 \uC788\uC73C\uBA74 30\uCD08\uB2F9
-      \uB2E4\uB978 \uCE90\uB9AD\uD130 1\uC529 \uD68C\uBCF5\\n\uB4E4\uC5B4\uAC00 \uC788\uC73C\uBA74
-      \uC801 \uCCB4\uB825 10\uD37C \uAC10\uC18C"
-    skillValue: 0100000002000000030000000400000005000000
+      \uB2E4\uB978 \uCE90\uB9AD\uD130 {0}\uC529 \uD68C\uBCF5\\n\uB4E4\uC5B4\uAC00
+      \uC788\uC73C\uBA74 \uC801 \uCCB4\uB825 {1}\uD37C \uAC10\uC18C"
+    skillValue: 010000000a000000
     recommendedWeapon: {fileID: 21300000, guid: 54202521f83b3c141bce8afc83876a7a, type: 3}
   - id: 2
     name: "\uD558\uB2C8"
@@ -43,8 +43,8 @@ MonoBehaviour:
     story: "\uC0AC\uB78C \uC544\uB2C8\uC57C \u3160\u3160"
     skillDescription: "3\uB2E8 \uC810\uD504\\n2\uB2E8 \uC810\uD504\uC2DC \uAC8C\uC774\uC9C0\uAC00
       10 \uC313\uC784\\n\uAC8C\uC774\uC9C0 \uD480 \uCC28\uC9D5(100)\uC2DC \uB2E4\uC74C
-      \uAE30\uBCF8\uC774 \uC801\uC744 10\uCD08 \uB3D9\uC548 \uAC10\uC804\uC2DC\uD0B4"
-    skillValue: 0100000002000000030000000400000005000000
+      \uAE30\uBCF8\uC774 \uC801\uC744 {0}\uCD08 \uB3D9\uC548 \uAC10\uC804\uC2DC\uD0B4"
+    skillValue: 0a000000
     recommendedWeapon: {fileID: 21300000, guid: 79b796c2410178f4298af4588ebc7538, type: 3}
   - id: 3
     name: "\uB9E5"
@@ -55,8 +55,8 @@ MonoBehaviour:
     skillDescription: " \uC77C\uC815 \uC2DC\uAC04 \uB3D9\uC548 \uD53C\uD574\uB97C
       \uBC1B\uC9C0 \uC54A\uC73C\uBA74 \uC7A5\uC560\uBB3C \uD53C\uACA9\uC744 1\uD68C
       \uBC29\uC5B4\uD558\uB294 \uBCF4\uD638\uB9C9 \uC0DD\uC131,\\n\uBCF4\uD638\uB9C9
-      \uC788\uC744 \uB54C \uACF5\uACA9\uB825 20% \uC99D\uAC00"
-    skillValue: 0100000002000000030000000400000005000000
+      \uC788\uC744 \uB54C \uACF5\uACA9\uB825 {0}% \uC99D\uAC00"
+    skillValue: 14000000
     recommendedWeapon: {fileID: 21300000, guid: fcfc47fcf9d77c94aa12abcce65d68ff, type: 3}
   - id: 4
     name: "\uBAA8\uD2B8"
@@ -65,8 +65,9 @@ MonoBehaviour:
     apList: 0100000002000000030000000400000005000000
     story: "\uCC9C\uC7AC \uBC94\uC0DD\uC774 \uC5F0\uAD6C\uC6D0"
     skillDescription: "\uC810\uD504 \uD639\uC740 \uC2AC\uB77C\uC774\uB4DC\uB97C \uD558\uC9C0
-      \uC54A\uC740 \uC2DC\uAC04\uB9C8\uB2E4 \uACF5\uACA9\uB825 \uC99D\uAC00"
-    skillValue: 0100000002000000030000000400000005000000
+      \uC54A\uC740 \uC2DC\uAC04\uB9C8\uB2E4 \uACF5\uACA9\uB825 \uC99D\uAC00 (3\uCD08\uB2F9
+      {0}%)"
+    skillValue: 01000000
     recommendedWeapon: {fileID: 21300000, guid: 01eba477c26fd464381f286f5b9278e3, type: 3}
   - id: 5
     name: "\uCE74\uB85D"
@@ -75,7 +76,7 @@ MonoBehaviour:
     apList: 0100000002000000030000000400000005000000
     story: "\uAC8C\uC774\uC544\uB2D8."
     skillDescription: "\uCCB4\uB825\uC774 30% \uBBF8\uB9CC\uC77C \uB54C \uACF5\uACA9\uB825\uACFC
-      \uACF5\uACA9\uC18D\uB3C4\uAC00 30% \uC99D\uAC00\uD558\uBA70, 20% \uBBF8\uB9CC\uC77C
+      \uACF5\uACA9\uC18D\uB3C4\uAC00 {0}% \uC99D\uAC00\uD558\uBA70, {1}% \uBBF8\uB9CC\uC77C
       \uB54C \uD761\uD608 20%\uB97C \uAC00\uC9D0"
-    skillValue: 0100000002000000030000000400000005000000
+    skillValue: 1e00000014000000
     recommendedWeapon: {fileID: 21300000, guid: 9913ec0b0042496488074788fbfcac44, type: 3}

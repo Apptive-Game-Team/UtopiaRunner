@@ -1,5 +1,6 @@
 using System.Collections;
 using _01.Scripts._00.Manager;
+using _01.Scripts._05.Utility;
 using _01.Scripts._06.Weapon;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -44,7 +45,7 @@ namespace _01.Scripts._07.Character
         public override void Init()
         {
             _inGameManager = FindAnyObjectByType<InGameManager>();
-            _otherPlayer = (_inGameManager.mainCharacter == gameObject ?
+            _otherPlayer = (_inGameManager.mainCharacter == this ?
                 _inGameManager.subCharacter : _inGameManager.mainCharacter).GetComponent<PlayerController>();
             if (gameObject.activeSelf)
             {
@@ -59,7 +60,8 @@ namespace _01.Scripts._07.Character
         {
             while (true)
             {
-                // todo : _otherPlayer의 체력 증가 -> 체력 부분 구현 이후 추가예정
+                _otherPlayer.Heal(ValueFormula.GetCharacterSkillValues(
+                    characterInfo, GameManager.Instance.playerData.characterGrade[characterInfo.id])[0]);
                 yield return new WaitForSeconds(30f);
             }
         }

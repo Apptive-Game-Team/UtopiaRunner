@@ -1,3 +1,5 @@
+using _01.Scripts._00.Manager;
+using _01.Scripts._05.Utility;
 using UnityEngine;
 
 namespace _01.Scripts._07.Character
@@ -24,9 +26,11 @@ namespace _01.Scripts._07.Character
 
         private void UpdateWeaponDamage()
         {
-            float progress = Mathf.Clamp01(_enhancementTimer / maxEnhanceTime);
-            float currentMultiplier = Mathf.Lerp(1f, maxDamageMultiplier, progress);
-            
+            int increaseCount = Mathf.FloorToInt(_enhancementTimer / 3f);
+
+            float currentMultiplier = 1f + increaseCount * ValueFormula.GetCharacterSkillValues(
+                characterInfo, GameManager.Instance.playerData.characterGrade[characterInfo.id])[0] / 100;
+
             damage = _originDamage * currentMultiplier;
         }
 

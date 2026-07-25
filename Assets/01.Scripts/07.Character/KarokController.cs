@@ -1,3 +1,5 @@
+using _01.Scripts._00.Manager;
+using _01.Scripts._05.Utility;
 using _01.Scripts._06.Weapon;
 using UnityEngine;
 
@@ -27,8 +29,10 @@ namespace _01.Scripts._07.Character
         {
             if (hp < maxHp * 0.3f)
             {
-                damage = _originDamage * 1.3f;
-                _wc.weaponInfo.attackSpeed = _originWeaponAttackSpeed * 0.7f;
+                damage = _originDamage * (1 + ValueFormula.GetCharacterSkillValues(
+                    characterInfo, GameManager.Instance.playerData.characterGrade[characterInfo.id])[0] / 100);
+                _wc.weaponInfo.attackSpeed = _originWeaponAttackSpeed / (1 - ValueFormula.GetCharacterSkillValues(
+                    characterInfo, GameManager.Instance.playerData.characterGrade[characterInfo.id])[0] / 100);
             }
             else
             {
@@ -45,7 +49,8 @@ namespace _01.Scripts._07.Character
                 {
                     if (hp <= maxHp / 0.2f) 
                     {
-                        float healAmount = damage * 0.1f;
+                        float healAmount = damage * ValueFormula.GetCharacterSkillValues(
+                            characterInfo, GameManager.Instance.playerData.characterGrade[characterInfo.id])[1];
                         hp += healAmount;
                     }
                 });

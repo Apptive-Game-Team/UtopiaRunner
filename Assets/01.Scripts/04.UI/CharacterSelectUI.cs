@@ -79,7 +79,7 @@ namespace _01.Scripts._04.UI
                 TextMeshProUGUI characterName = button.transform.GetChild(2).GetComponent<TextMeshProUGUI>();
                 int index = i;
 
-                CharacterInfo characterInfo = characterData.characterInfos[index];
+                CharacterInfo characterInfo = characterData.characterInfos[index].Clone();
                 characterImage.sprite = characterInfo.sprite;
                 characterName.text = characterInfo.name;
 

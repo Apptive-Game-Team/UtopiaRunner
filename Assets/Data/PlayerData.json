@@ -1,5 +1,5 @@
 {
-    "coin": 100,
+    "coin": 9600,
     "currentWorld": 0,
     "currentStage": 0,
     "playTime": 0.0,
@@ -9,7 +9,7 @@
             "stages": [
                 {
                     "stageNum": 0,
-                    "isCleared": true
+                    "isCleared": false
                 },
                 {
                     "stageNum": 1,
@@ -153,21 +153,21 @@
     "unlockedCharacters": [
         true,
         true,
-        true,
+        false,
         false,
         false,
         false
     ],
     "unlockedWeapons": [
         true,
-        true,
+        false,
         false,
         false,
         false,
         false
     ],
     "characterGrade": [
-        0,
+        4,
         0,
         0,
         0,

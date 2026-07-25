@@ -1,3 +1,5 @@
+using _01.Scripts._00.Manager;
+using _01.Scripts._05.Utility;
 using _01.Scripts._06.Weapon;
 using UnityEngine;
 
@@ -39,7 +41,8 @@ namespace _01.Scripts._07.Character
                 return;
             }
             
-            _wc.ReduceCooldown(10f);
+            _wc.ReduceCooldown(ValueFormula.GetCharacterSkillValues(
+                characterInfo, GameManager.Instance.playerData.characterGrade[characterInfo.id])[0]);
             _timeCounter = Time.time;
         }
 

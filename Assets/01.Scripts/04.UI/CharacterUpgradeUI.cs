@@ -78,7 +78,7 @@ namespace _01.Scripts._04.UI
 
         private void RefreshUI()
         {
-            _characterInfo = characterData.characterInfos[characterIndex];
+            _characterInfo = characterData.characterInfos[characterIndex].Clone();
 
             characterImage.sprite = _characterInfo.sprite;
             characterNameText.text = _characterInfo.name;
@@ -130,10 +130,19 @@ namespace _01.Scripts._04.UI
             characterUpgradeButton.onClick.AddListener(() =>
             {
                 if (GoldManager.Instance == null)
+                {
                     return;
+                }
 
                 if (!GoldManager.Instance.TrySpendGold(upgradeGoldCost))
+                {
                     return;
+                }
+
+                if (GameManager.Instance.playerData.characterGrade[characterIndex] == 4)
+                {
+                    return;
+                }
 
                 playerData.characterGrade[characterIndex] =
                     Mathf.Min(
