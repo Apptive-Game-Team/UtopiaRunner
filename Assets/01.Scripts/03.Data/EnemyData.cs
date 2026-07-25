@@ -3,7 +3,8 @@ using UnityEngine;
 public enum EnemyAttackType
 {
     Bullet,
-    Laser
+    Laser,
+    Explode,
 }
 
 [CreateAssetMenu(fileName = "NewEnemyData", menuName = "Data/Enemy")]

@@ -59,7 +59,7 @@ public class EnemySlotManager : MonoBehaviour
         }
     }
 
-    public GameObject SpawnEnemy(GameObject enemyPrefab, EnemyLane lane)
+    public GameObject SpawnEnemy(GameObject enemyPrefab, EnemyLane lane, bool isSpawnByBoss = false)
     {
         if (enemyPrefab == null) return null;
         if (!slotMap.ContainsKey(lane)) return null;
@@ -72,7 +72,7 @@ public class EnemySlotManager : MonoBehaviour
 
         PushLineLeft(lane);
 
-        int spawnIndex = 0;
+        int spawnIndex = isSpawnByBoss ? 1 : 0;
         EnemySlot spawnSlot = laneSlots[spawnIndex];
 
         Vector3 spawnPosition =
@@ -86,13 +86,16 @@ public class EnemySlotManager : MonoBehaviour
 
         SlotEnemy slotEnemy = enemyObj.GetComponent<SlotEnemy>();
 
-        if (slotEnemy == null)
+        if (!slotEnemy && enemyObj.GetComponent<EnemyHp>())
         {
             slotEnemy = enemyObj.AddComponent<SlotEnemy>();
         }
 
-        slotEnemy.Init(this, lane, spawnIndex);
-        laneEnemies[spawnIndex] = slotEnemy;
+        if (slotEnemy)
+        {
+            slotEnemy.Init(this, lane, spawnIndex);
+            laneEnemies[spawnIndex] = slotEnemy;
+        }
 
         if (EveMemoryManager.Instance != null)
         {
