@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using _01.Scripts._00.Manager;
 using UnityEngine;
 using CharacterInfo = _01.Scripts._03.Data.CharacterInfo;
 
@@ -88,6 +89,11 @@ namespace _01.Scripts._05.Utility
         public static void SetEnemyAttackSpeed(float speed)
         {
             enemyAttackSpeed = speed;
+        }
+
+        public static int GetCharacterUpgradeGold(int characterId)
+        {
+            return 50 * (GameManager.Instance.playerData.characterGrade[characterId] + 1);
         }
     }
 }

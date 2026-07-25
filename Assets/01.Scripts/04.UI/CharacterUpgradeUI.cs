@@ -1,5 +1,6 @@
 using _01.Scripts._00.Manager;
 using _01.Scripts._03.Data;
+using _01.Scripts._05.Utility;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -21,9 +22,6 @@ namespace _01.Scripts._04.UI
         [Header("Arrow Buttons")]
         [SerializeField] private Button prevButton;
         [SerializeField] private Button nextButton;
-
-        [Header("Upgrade")]
-        [SerializeField] private int upgradeGoldCost = 100;
 
         public int characterIndex;
 
@@ -134,7 +132,7 @@ namespace _01.Scripts._04.UI
                     return;
                 }
 
-                if (!GoldManager.Instance.TrySpendGold(upgradeGoldCost))
+                if (!GoldManager.Instance.TrySpendGold(ValueFormula.GetCharacterUpgradeGold(characterIndex)))
                 {
                     return;
                 }
@@ -143,7 +141,7 @@ namespace _01.Scripts._04.UI
                 {
                     return;
                 }
-
+                
                 playerData.characterGrade[characterIndex] =
                     Mathf.Min(
                         _characterInfo.apList.Count - 1,

@@ -85,9 +85,9 @@ namespace _01.Scripts._07.Character
         {
             IsSet = true;
 
-            maxHp = characterInfo.hpList[0];
+            maxHp = characterInfo.hpList[0] * (GameManager.Instance.playerData.characterGrade[characterInfo.id] + 1);
             hp = maxHp;
-            damage = characterInfo.apList[0];
+            damage = characterInfo.apList[0] * (GameManager.Instance.playerData.characterGrade[characterInfo.id] + 1);
         }
 
         // 무기 Init 이후 추가 작업
