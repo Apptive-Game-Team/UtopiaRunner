@@ -30,8 +30,8 @@ namespace _01.Scripts._00.Manager
         public PlayerController subCharacter;
         public WeaponController weapon;
         
-        private Slider _mainCharacterHp;
-        private Slider _subCharacterHp;
+        private SmoothHpBar _mainCharacterHp;
+        private SmoothHpBar _subCharacterHp;
         private Image _weaponImage;
         private Slider _skillCoolTimeSlider;
         private HoverTrigger _mainCharacterHover;
@@ -46,8 +46,8 @@ namespace _01.Scripts._00.Manager
         {
             GameObject inGameUI = GameObject.Find("InGameUI");
 
-            _mainCharacterHp = inGameUI.transform.GetChild(0).GetComponent<Slider>();
-            _subCharacterHp = inGameUI.transform.GetChild(1).GetComponent<Slider>();
+            _mainCharacterHp = inGameUI.transform.GetChild(0).GetComponent<SmoothHpBar>();
+            _subCharacterHp = inGameUI.transform.GetChild(1).GetComponent<SmoothHpBar>();
             _weaponImage = inGameUI.transform.GetChild(2).GetComponent<Image>();
             _skillCoolTimeSlider = inGameUI.transform.GetChild(3).GetComponent<Slider>();
         }
@@ -104,6 +104,7 @@ namespace _01.Scripts._00.Manager
 
             mainCharacter.OnHpChanged += UpdateHpUI;
             subCharacter.OnHpChanged += UpdateHpUI;
+            UpdateHpUI(false);
 
             mainCharacter.OnDead += CheckDead;
             subCharacter.OnDead += CheckDead;
@@ -134,8 +135,14 @@ namespace _01.Scripts._00.Manager
         
         private void UpdateHpUI()
         {
-            _mainCharacterHp.value = mainCharacter.hp / mainCharacter.maxHp;
-            _subCharacterHp.value = subCharacter.hp / subCharacter.maxHp;
+            _mainCharacterHp.UpdateHp(mainCharacter.hp, mainCharacter.maxHp, true);
+            _subCharacterHp.UpdateHp(subCharacter.hp, subCharacter.maxHp, true);
+        }
+
+        private void UpdateHpUI(bool setSmooth)
+        {
+            _mainCharacterHp.UpdateHp(mainCharacter.hp, mainCharacter.maxHp, setSmooth);
+            _subCharacterHp.UpdateHp(subCharacter.hp, subCharacter.maxHp, setSmooth);
         }
 
         private void SetSkillCoolTime(float current, float max)
@@ -173,7 +180,7 @@ namespace _01.Scripts._00.Manager
             
             RefreshCharacterTooltipData();
 
-            UpdateHpUI();
+            UpdateHpUI(false);
             
             weapon.SetDamage(mainCharacter.GetComponent<PlayerController>().damage);
         }
@@ -187,6 +194,7 @@ namespace _01.Scripts._00.Manager
 
         private void CheckDead()
         {
+            _canTag = false;
             if (!subCharacter.isDead)
             {
                 Tag();

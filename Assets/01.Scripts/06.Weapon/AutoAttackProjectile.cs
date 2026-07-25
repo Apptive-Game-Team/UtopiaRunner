@@ -1,4 +1,5 @@
 using System;
+using _01.Scripts._00.Manager;
 using UnityEngine;
 
 namespace _01.Scripts._06.Weapon
@@ -7,15 +8,42 @@ namespace _01.Scripts._06.Weapon
     {
         [SerializeField] private float speed = 10f;
 
-        // ±âÁ¸ ±â´É: °¡Àå °¡±î¿î ÀûÀ» Ã£¾Æ¼­ ±× ¹æÇâÀ¸·Î ¹ß»ç
+        // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½: ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ Ã£ï¿½Æ¼ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ß»ï¿½
         // private GameObject _targetEnemy;
         // private Vector3 _targetDirection;
 
-        // º¯°æ ±â´É: ±×³É ¿À¸¥ÂÊÀ¸·Î ÀÏÁ÷¼± ÀÌµ¿
+        // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½: ï¿½×³ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ìµï¿½
         private Vector3 _moveDirection = Vector3.right;
 
         protected Action<GameObject, float> OnHitEffects;
         protected float Damage;
+        private Color _textureColor;
+
+        private void Awake()
+        {
+            Sprite sprite = GetComponent<SpriteRenderer>().sprite;
+
+            Texture2D texture = sprite.texture;
+            Rect rect = sprite.textureRect;
+
+            Color[] pixels = texture.GetPixels(
+                (int)rect.x,
+                (int)rect.y,
+                (int)rect.width,
+                (int)rect.height);
+
+            Color average = Color.black;
+
+            foreach (Color pixel in pixels)
+            {
+                average += pixel;
+            }
+
+            average /= pixels.Length;
+            average.a = 1;
+
+            _textureColor = average * GetComponent<SpriteRenderer>().color;
+        }
 
         public void Init(float damage)
         {
@@ -29,7 +57,7 @@ namespace _01.Scripts._06.Weapon
 
         private void Update()
         {
-            // ±âÁ¸ ±â´É: °¡Àå °¡±î¿î ÀûÀ» Ã£¾Æ¼­ ±× ¹æÇâÀ¸·Î ÀÌµ¿
+            // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½: ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ Ã£ï¿½Æ¼ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ìµï¿½
             /*
             if (_targetEnemy == null)
             {
@@ -48,14 +76,14 @@ namespace _01.Scripts._06.Weapon
             transform.Translate(_targetDirection * (speed * Time.deltaTime));
             */
 
-            // º¯°æ ±â´É: ¿À¸¥ÂÊÀ¸·Î ÀÏÁ÷¼± ÀÌµ¿
+            // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½: ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ìµï¿½
             transform.Translate(
                 _moveDirection * (speed * Time.deltaTime),
                 Space.World
             );
         }
 
-        // ±âÁ¸ ±â´É: °¡Àå °¡±î¿î Àû Ã£±â
+        // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½: ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ Ã£ï¿½ï¿½
         /*
         private GameObject FindNearestEnemy()
         {
@@ -85,6 +113,7 @@ namespace _01.Scripts._06.Weapon
             if (collision.CompareTag("Enemy"))
             {
                 ApplyHit(collision.gameObject);
+                EffectManager.Instance.PlayEffect(EffectType.Hit, collision.ClosestPoint(transform.position), _textureColor);
                 Destroy(gameObject);
             }
         }
@@ -95,7 +124,7 @@ namespace _01.Scripts._06.Weapon
 
             enemy.GetComponent<EnemyHp>()?.TakeDamage(damage);
             enemy.GetComponent<BossHp>()?.TakeDamage(damage);
-
+            
             OnHitEffects?.Invoke(enemy, damage);
         }
 
