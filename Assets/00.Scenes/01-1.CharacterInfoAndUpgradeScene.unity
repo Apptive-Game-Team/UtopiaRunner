@@ -4157,7 +4157,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uAC15\uD654 \uC2A4\uD15F"
+  m_text: "\uACF5\uACA9\uB825 : \uCE90\uB9AD\uD130 \uACF5\uACA9\uB825"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 2a0b9657e10562e46ba69247f6672ac2, type: 2}
   m_sharedMaterial: {fileID: 5161115209617159762, guid: 2a0b9657e10562e46ba69247f6672ac2, type: 2}
@@ -5126,7 +5126,6 @@ MonoBehaviour:
   characterWeapon: {fileID: 7183230}
   prevButton: {fileID: 722760233}
   nextButton: {fileID: 1026976991}
-  upgradeGoldCost: 100
   characterIndex: 0
 --- !u!1 &1597302176
 GameObject:

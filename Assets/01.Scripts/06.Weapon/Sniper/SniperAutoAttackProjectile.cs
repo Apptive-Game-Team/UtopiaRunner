@@ -1,4 +1,6 @@
 using System;
+using _01.Scripts._00.Manager;
+using _01.Scripts._05.Utility;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -25,8 +27,12 @@ namespace _01.Scripts._06.Weapon.Sniper
             {
                 return Damage * multiplier;
             }
-            
-            return _isFirstTarget ? (Damage * multiplier * 2) : (Damage * multiplier / 2);
+
+            float mul1 = ValueFormula.GetWeaponSkillValues(InGameManager.Instance.weapon.weaponInfo,
+                GameManager.Instance.playerData.weaponGrade[InGameManager.Instance.weapon.weaponInfo.id])[0] / 100;
+            float mul2 = ValueFormula.GetWeaponSkillValues(InGameManager.Instance.weapon.weaponInfo,
+                GameManager.Instance.playerData.weaponGrade[InGameManager.Instance.weapon.weaponInfo.id])[1] / 100;
+            return _isFirstTarget ? (Damage * multiplier * mul1) : (Damage * multiplier * mul2);
         }
 
         public void DelayedDestroy(float time)

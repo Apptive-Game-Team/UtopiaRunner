@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2671707411285745610}
   - component: {fileID: 3240227555405865231}
   m_Layer: 0
-  m_Name: MacShield
+  m_Name: Shield
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -15,6 +15,8 @@ namespace _01.Scripts._00.Manager
 {
     public class InGameManager : MonoBehaviour
     {
+        public static InGameManager Instance { get; private set; }
+        
         [Header("In Game Setting")] 
         [SerializeField] private CharacterData characterData;
         [SerializeField] private GameObject gameOverPrefab;
@@ -45,6 +47,15 @@ namespace _01.Scripts._00.Manager
 
         private void InitialCaching()
         {
+            if (Instance == null)
+            {
+                Instance = this;
+            }
+            else
+            {
+                Destroy(gameObject);
+            }
+            
             GameObject inGameUI = GameObject.Find("InGameUI");
 
             _mainCharacterHp = inGameUI.transform.GetChild(0).GetComponent<SmoothHpBar>();
@@ -70,10 +81,10 @@ namespace _01.Scripts._00.Manager
             GameObject wp = weapons.First(go => go.GetComponent<WeaponController>().weaponId == weaponId);
             
             mainCharacter = Instantiate(mainChar, startPosition, Quaternion.identity).GetComponent<PlayerController>();
-            mainCharacter.characterInfo = characterData.characterInfos.First(info => info.id == mainCharacter.id);
+            mainCharacter.characterInfo = characterData.characterInfos.First(info => info.id == mainCharacter.id).Clone();
             
             subCharacter = Instantiate(subChar, startPosition, Quaternion.identity).GetComponent<PlayerController>();
-            subCharacter.characterInfo = characterData.characterInfos.First(info => info.id == subCharacter.id);
+            subCharacter.characterInfo = characterData.characterInfos.First(info => info.id == subCharacter.id).Clone();
             subCharacter.gameObject.SetActive(false);
             
             weapon = Instantiate(wp, mainCharacter.transform).GetComponent<WeaponController>();
@@ -88,7 +99,7 @@ namespace _01.Scripts._00.Manager
             HoverTrigger weaponHover = _weaponImage.gameObject.AddComponent<HoverTrigger>();
             weaponHover.SetTooltipData($"{weapon.weaponInfo.name}     LV{GameManager.Instance.playerData.weaponGrade[weapon.weaponInfo.id]}\n",
                 $"{weapon.weaponInfo.characteristic}\n\n" + $"{weapon.weaponInfo.skillDescription}\n\n" +
-                $"공격력 : {weapon.weaponInfo.apList[GameManager.Instance.playerData.weaponGrade[weapon.weaponInfo.id]]} ");
+                $"공격력 : {mainCharacter.damage} ");
             
             mainCharacter.AfterInit();
             subCharacter.AfterInit();
@@ -180,6 +191,11 @@ namespace _01.Scripts._00.Manager
             _subCharacterHp.GetComponentInChildren<Image>().sprite = subCharacter.characterInfo.sprite;
             
             RefreshCharacterTooltipData();
+            
+            HoverTrigger weaponHover = _weaponImage.gameObject.GetComponent<HoverTrigger>();
+            weaponHover.SetTooltipData($"{weapon.weaponInfo.name}     LV{GameManager.Instance.playerData.weaponGrade[weapon.weaponInfo.id]}\n",
+                $"{weapon.weaponInfo.characteristic}\n\n" + $"{weapon.weaponInfo.skillDescription}\n\n" +
+                $"공격력 : {mainCharacter.damage} ");
 
             UpdateHpUI(false);
             

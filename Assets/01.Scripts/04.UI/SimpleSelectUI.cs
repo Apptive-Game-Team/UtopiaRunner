@@ -79,6 +79,9 @@ namespace _01.Scripts._04.UI
                 });
             }
             
+            // 선택된 무기 이미지
+            selectedWeapon.sprite = weaponData.weaponInfos.Find(w => w.id == StageManager.Instance.selectedWeapon).sprite;
+            
 
             // 캐릭터 리스트 버튼 관리
             for (int i = 0; i < _maxCharacterCount; i++)
@@ -135,7 +138,7 @@ namespace _01.Scripts._04.UI
                 Image image = button.transform.GetChild(1).GetComponent<Image>();
                 int index = i;
 
-                WeaponInfo weaponInfo = weaponData.weaponInfos[index];
+                WeaponInfo weaponInfo = weaponData.weaponInfos[index].Clone();
                 image.sprite = weaponData.weaponInfos[i].sprite;
 
                 if (!_unLockedWeapons[index])
@@ -147,7 +150,7 @@ namespace _01.Scripts._04.UI
                 HoverTrigger hover = button.gameObject.AddComponent<HoverTrigger>();
                 hover.SetTooltipData($"{weaponInfo.name}     LV{GameManager.Instance.playerData.weaponGrade[weaponInfo.id]}\n",
                     $"{weaponInfo.characteristic}\n\n" + $"{weaponInfo.skillDescription}\n\n" +
-                    $"공격력 : {weaponInfo.apList[GameManager.Instance.playerData.weaponGrade[weaponInfo.id]]} ");
+                    $"공격력 : 캐릭터 공격력");
                 
                 button.onClick.RemoveAllListeners();
                 button.onClick.AddListener(() =>

@@ -1,6 +1,9 @@
 using System;
 using System.Collections.Generic;
+using _01.Scripts._00.Manager;
+using _01.Scripts._05.Utility;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace _01.Scripts._04.UI
 {
@@ -13,7 +16,6 @@ namespace _01.Scripts._04.UI
         public Sprite sprite;
         
         [Header("Stat")]
-        public List<int> apList;
         public List<int> skillValue;
         public float coolTime;
         public float attackSpeed;
@@ -30,12 +32,11 @@ namespace _01.Scripts._04.UI
                 id = id,
                 name = name,
                 sprite = sprite,
-                apList = new List<int>(apList),
                 skillValue = new List<int>(skillValue),
                 coolTime = coolTime,
                 attackSpeed = attackSpeed,
                 characteristic = characteristic,
-                skillDescription = skillDescription,
+                skillDescription = ValueFormula.GetFormattedSkillDescription(this, GameManager.Instance.playerData.weaponGrade[id]),
                 recommendedCharacter = recommendedCharacter
             };
         }

@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using _01.Scripts._00.Manager;
+using _01.Scripts._05.Utility;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -43,8 +44,9 @@ namespace _01.Scripts._04.UI
                 Button button = Instantiate(weaponButtonPrefab.gameObject, content.transform).GetComponent<Button>();
                 Image image = button.transform.GetChild(1).GetComponent<Image>();
                 int index = i;
-
-                image.sprite = weaponData.weaponInfos[i].sprite;
+                WeaponInfo weaponInfo = weaponData.weaponInfos[i].Clone();
+                
+                image.sprite = weaponInfo.sprite;
 
                 if (!_unLockedWeapons[index])
                 {
@@ -62,12 +64,11 @@ namespace _01.Scripts._04.UI
                 {
                     weaponInfoGroup.alpha = 1;
                     
-                    weaponName.text = weaponData.weaponInfos[index].name;
-                    weaponImage.sprite = weaponData.weaponInfos[index].sprite;
-                    weaponCharacteristic.text = weaponData.weaponInfos[index].characteristic;
-                    weaponSkillDescription.text = weaponData.weaponInfos[index].skillDescription;
-                    UpdateStatText(index);
-                    recommendedCharacter.text = $"추천 캐릭터 : {weaponData.weaponInfos[index].recommendedCharacter}"; 
+                    weaponName.text = weaponInfo.name;
+                    weaponImage.sprite = weaponInfo.sprite;
+                    weaponCharacteristic.text = weaponInfo.characteristic;
+                    weaponSkillDescription.text = weaponInfo.skillDescription;
+                    recommendedCharacter.text = $"추천 캐릭터 : {weaponInfo.recommendedCharacter}"; 
                     
                     selectButton.onClick.RemoveAllListeners();
                     selectButton.onClick.AddListener(() =>
@@ -75,7 +76,7 @@ namespace _01.Scripts._04.UI
                         StageManager.Instance.selectedWeapon = index;
                     });
                     
-                    if (playerData.weaponGrade[index] >= weaponData.weaponInfos[index].apList.Count - 1)
+                    if (playerData.weaponGrade[index] >= ValueFormula.WeaponMaxLevel)
                     {
                         upgradeButton.interactable = false;
                     }
@@ -86,28 +87,35 @@ namespace _01.Scripts._04.UI
                         upgradeButton.onClick.RemoveAllListeners();
                         upgradeButton.onClick.AddListener(() =>
                         {
-                            playerData.weaponGrade[index] = 
-                                Mathf.Min(weaponData.weaponInfos[index].apList.Count - 1, playerData.weaponGrade[index] + 1);
-                            UpdateStatText(index);
+                            if (playerData.weaponGrade[index] >= ValueFormula.WeaponMaxLevel)
+                            {
+                                return;
+                            }
+
+                            if (!GoldManager.Instance)
+                            {
+                                return;
+                            }
+
+                            if (!GoldManager.Instance.TrySpendGold(ValueFormula.GetWeaponUpgradeGold(index)))
+                            {
+                                return;
+                            }
+
+                            playerData.weaponGrade[index]++;
+                            weaponInfo = weaponData.weaponInfos[index].Clone();
+                            weaponSkillDescription.text =
+                                ValueFormula.GetFormattedSkillDescription(weaponInfo, playerData.weaponGrade[index]);
                             
-                            if (playerData.weaponGrade[index] >= weaponData.weaponInfos[index].apList.Count - 1)
+                            if (playerData.weaponGrade[index] >= ValueFormula.WeaponMaxLevel)
                             {
                                 upgradeButton.interactable = false;
                             }
+                            
+                            GameManager.Instance.SaveGame();
                         });
                     }
                 });
-            }
-        }
-        
-        private void UpdateStatText(int index)
-        {
-            PlayerData playerData = GameManager.Instance.playerData;
-            
-            upgradeStat.text = $"Ap : {weaponData.weaponInfos[index].apList[playerData.weaponGrade[index]]}";
-            if (playerData.weaponGrade[index] < weaponData.weaponInfos[index].apList.Count - 1)
-            {
-                upgradeStat.text += $"<color=grey>({weaponData.weaponInfos[index].apList[playerData.weaponGrade[index] + 1]})</color>";
             }
         }
     }

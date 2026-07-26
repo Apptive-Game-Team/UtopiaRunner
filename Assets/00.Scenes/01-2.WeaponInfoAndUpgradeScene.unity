@@ -1239,6 +1239,8 @@ MonoBehaviour:
   characterStory: {fileID: 1098679208}
   characterSkillDescription: {fileID: 1256030169}
   characterWeapon: {fileID: 1601868711}
+  prevButton: {fileID: 0}
+  nextButton: {fileID: 0}
   characterIndex: 0
 --- !u!222 &299435981
 CanvasRenderer:
@@ -1855,7 +1857,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uAC15\uD654 \uC2A4\uD15F"
+  m_text: "\uACF5\uACA9\uB825 : \uCE90\uB9AD\uD130 \uACF5\uACA9\uB825"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 2a0b9657e10562e46ba69247f6672ac2, type: 2}
   m_sharedMaterial: {fileID: 5161115209617159762, guid: 2a0b9657e10562e46ba69247f6672ac2, type: 2}

@@ -63,7 +63,6 @@ namespace _01.Scripts._04.UI
                     weaponImage.sprite = weaponData.weaponInfos[index].sprite;
                     weaponCharacteristic.text = weaponData.weaponInfos[index].characteristic;
                     weaponSkillDescription.text = weaponData.weaponInfos[index].skillDescription;
-                    UpdateStatText(index);
                     recommendedCharacter.text = $"추천 캐릭터 : {weaponData.weaponInfos[index].recommendedCharacter}";
 
                     selectButton.onClick.RemoveAllListeners();
@@ -89,17 +88,6 @@ namespace _01.Scripts._04.UI
             }
             _selectedWeaponButton = button;
             _selectedWeaponButton.transform.GetChild(0).gameObject.SetActive(true);
-        }
-        
-        private void UpdateStatText(int index)
-        {
-            PlayerData playerData = GameManager.Instance.playerData;
-            
-            upgradeStat.text = $"Ap : {weaponData.weaponInfos[index].apList[playerData.weaponGrade[index]]}";
-            if (playerData.weaponGrade[index] < weaponData.weaponInfos[index].apList.Count - 1)
-            {
-                upgradeStat.text += $"<color=grey>({weaponData.weaponInfos[index].apList[playerData.weaponGrade[index] + 1]})</color>";
-            }
         }
     }
 }

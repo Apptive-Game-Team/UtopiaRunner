@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Linq;
+using _01.Scripts._00.Manager;
 using UnityEngine;
 
 namespace _01.Scripts._06.Weapon.DroneLauncher
@@ -21,7 +22,7 @@ namespace _01.Scripts._06.Weapon.DroneLauncher
             if (projectileScript != null)
             {
                 bool isEnhanced = (_attackCount == enhancedAttackCount);
-                projectileScript.Init(weaponInfo.apList[0] * (isEnhanced ? 2 : 1));
+                projectileScript.Init(attackDamage * (isEnhanced ? 2 : 1));
                 if (isEnhanced)
                 {
                     projectile.GetComponent<SpriteRenderer>().color = Color.red;

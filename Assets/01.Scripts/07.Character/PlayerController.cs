@@ -52,6 +52,8 @@ namespace _01.Scripts._07.Character
         private BoxCollider2D _boxCol;
         private Vector2 _normalSize;
         private Vector2 _normalOffset;
+
+        public bool hasShield;
         
 
         protected virtual void Awake()
@@ -99,6 +101,16 @@ namespace _01.Scripts._07.Character
 
         public virtual void TakeDamage(float d)
         {
+            if (hasShield)
+            {
+                hasShield = false;
+                if (transform.Find("Shield") is { } shield)
+                {
+                    Destroy(shield.gameObject);
+                }
+                return;
+            }
+            
             hp -= d;
             
             OnHpChanged?.Invoke();

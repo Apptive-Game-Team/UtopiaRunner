@@ -28,7 +28,6 @@ namespace _01.Scripts._06.Weapon
         public GameObject attackPrefab;
         public GameObject skillPrefab;
         public float attackDamage;
-        public float skillDamage;
 
         public Action<float, float> OnCoolDownChanged;
     
@@ -61,8 +60,7 @@ namespace _01.Scripts._06.Weapon
 
         public void SetDamage(float characterDamage)
         {
-            attackDamage = weaponInfo.apList[0] * characterDamage;
-            skillDamage = weaponInfo.skillValue[0] * characterDamage;
+            attackDamage = characterDamage;
         }
 
         private void Update()
