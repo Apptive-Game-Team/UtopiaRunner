@@ -1,6 +1,7 @@
 using System;
 using _01.Scripts._00.Manager;
 using _01.Scripts._03.Data;
+using _01.Scripts._05.Utility;
 using UnityEngine;
 
 namespace _01.Scripts._07.Character
@@ -85,9 +86,9 @@ namespace _01.Scripts._07.Character
         {
             IsSet = true;
 
-            maxHp = characterInfo.hpList[0] * (GameManager.Instance.playerData.characterGrade[characterInfo.id] + 1);
+            maxHp = ValueFormula.GetCharacterHp(characterInfo);
             hp = maxHp;
-            damage = characterInfo.apList[0] * (GameManager.Instance.playerData.characterGrade[characterInfo.id] + 1);
+            damage = ValueFormula.GetCharacterAp(characterInfo);
         }
 
         // 무기 Init 이후 추가 작업

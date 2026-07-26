@@ -25,7 +25,7 @@ namespace _01.Scripts._04.UI
 
         public int characterIndex;
 
-        private _01.Scripts._03.Data.CharacterInfo _characterInfo;
+        private _03.Data.CharacterInfo _characterInfo;
 
         private void OnEnable()
         {
@@ -117,7 +117,7 @@ namespace _01.Scripts._04.UI
 
             characterUpgradeButton.onClick.RemoveAllListeners();
 
-            if (playerData.characterGrade[characterIndex] >= _characterInfo.apList.Count - 1)
+            if (playerData.characterGrade[characterIndex] >= ValueFormula.CharacterMaxLevel)
             {
                 characterUpgradeButton.interactable = false;
                 return;
@@ -127,6 +127,11 @@ namespace _01.Scripts._04.UI
 
             characterUpgradeButton.onClick.AddListener(() =>
             {
+                if (GameManager.Instance.playerData.characterGrade[characterIndex] == ValueFormula.CharacterMaxLevel)
+                {
+                    return;
+                }
+                
                 if (GoldManager.Instance == null)
                 {
                     return;
@@ -137,16 +142,7 @@ namespace _01.Scripts._04.UI
                     return;
                 }
 
-                if (GameManager.Instance.playerData.characterGrade[characterIndex] == 4)
-                {
-                    return;
-                }
-                
-                playerData.characterGrade[characterIndex] =
-                    Mathf.Min(
-                        _characterInfo.apList.Count - 1,
-                        playerData.characterGrade[characterIndex] + 1
-                    );
+                playerData.characterGrade[characterIndex]++;
 
                 GameManager.Instance.SaveGame();
 
@@ -160,20 +156,20 @@ namespace _01.Scripts._04.UI
 
             int grade = playerData.characterGrade[characterIndex];
 
-            upgradeStat.text = $"Hp : {_characterInfo.hpList[grade]}";
+            upgradeStat.text = $"Hp : {ValueFormula.GetCharacterHp(_characterInfo)}";
 
-            if (grade < _characterInfo.hpList.Count - 1)
+            if (grade < ValueFormula.CharacterMaxLevel)
             {
                 upgradeStat.text +=
-                    $"<color=grey>({_characterInfo.hpList[grade + 1]})</color>";
+                    $"<color=grey>({_characterInfo.hp + ValueFormula.CharacterHpUpgradeAmount * (grade + 1)})</color>";
             }
 
-            upgradeStat.text += $" / Ap : {_characterInfo.apList[grade]}";
+            upgradeStat.text += $" / Ap : {ValueFormula.GetCharacterAp(_characterInfo)}";
 
-            if (grade < _characterInfo.apList.Count - 1)
+            if (grade < ValueFormula.CharacterMaxLevel)
             {
                 upgradeStat.text +=
-                    $"<color=grey>({_characterInfo.apList[grade + 1]})</color>";
+                    $"<color=grey>({_characterInfo.ap + ValueFormula.CharacterApUpgradeAmount  * (grade + 1)})</color>";
             }
         }
     }

@@ -67,11 +67,11 @@ namespace _01.Scripts._07.Character
 
         private IEnumerator SetEnemySlow(GameObject enemy, float time)
         {
-            float originSpeed = ValueFormula.enemyAttackSpeed;
-            ValueFormula.SetEnemyAttackSpeed(ValueFormula.enemyAttackSpeed + originSpeed);
+            float originSpeed = ValueFormula.EnemyAttackSpeed;
+            ValueFormula.SetEnemyAttackSpeed(ValueFormula.EnemyAttackSpeed + originSpeed);
             yield return new WaitForSeconds(ValueFormula.GetCharacterSkillValues(
                 characterInfo, GameManager.Instance.playerData.characterGrade[characterInfo.id])[0]);
-            ValueFormula.SetEnemyAttackSpeed(ValueFormula.enemyAttackSpeed - originSpeed);
+            ValueFormula.SetEnemyAttackSpeed(ValueFormula.EnemyAttackSpeed - originSpeed);
         }
     }
 }

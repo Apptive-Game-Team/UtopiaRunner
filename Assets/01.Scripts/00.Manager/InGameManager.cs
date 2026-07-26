@@ -3,6 +3,7 @@ using System.Collections;
 using System.Linq;
 using _01.Scripts._03.Data;
 using _01.Scripts._04.UI;
+using _01.Scripts._05.Utility;
 using _01.Scripts._07.Character;
 using _01.Scripts._06.Weapon;
 using Unity.VisualScripting;
@@ -119,8 +120,8 @@ namespace _01.Scripts._00.Manager
                 _mainCharacterHover.SetTooltipData(
                     $"{mainCharacter.characterInfo.name}     LV{GameManager.Instance.playerData.characterGrade[mainCharacter.characterInfo.id]}\n",
                     $"{mainCharacter.characterInfo.story}\n\n{mainCharacter.characterInfo.skillDescription}\n\n" +
-                    $"공격력 : {mainCharacter.characterInfo.apList[GameManager.Instance.playerData.characterGrade[mainCharacter.characterInfo.id]]} " +
-                    $"체력 : {mainCharacter.characterInfo.hpList[GameManager.Instance.playerData.characterGrade[mainCharacter.characterInfo.id]]}");
+                    $"공격력 : {ValueFormula.GetCharacterAp(mainCharacter.characterInfo)} " +
+                    $"체력 : {ValueFormula.GetCharacterHp(mainCharacter.characterInfo)}");
             }
 
             if (_subCharacterHover != null && subCharacter != null)
@@ -128,8 +129,8 @@ namespace _01.Scripts._00.Manager
                 _subCharacterHover.SetTooltipData(
                     $"{subCharacter.characterInfo.name}     LV{GameManager.Instance.playerData.characterGrade[subCharacter.characterInfo.id]}\n",
                     $"{subCharacter.characterInfo.story}\n\n{subCharacter.characterInfo.skillDescription}\n\n" +
-                    $"공격력 : {subCharacter.characterInfo.apList[GameManager.Instance.playerData.characterGrade[subCharacter.characterInfo.id]]} " +
-                    $"체력 : {subCharacter.characterInfo.hpList[GameManager.Instance.playerData.characterGrade[subCharacter.characterInfo.id]]}");
+                    $"공격력 : {ValueFormula.GetCharacterAp(subCharacter.characterInfo)} " +
+                    $"체력 : {ValueFormula.GetCharacterHp(subCharacter.characterInfo)}");
             }
         }
         

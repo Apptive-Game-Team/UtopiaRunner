@@ -13,8 +13,8 @@ namespace _01.Scripts._03.Data
         public int id;
         public string name;
         public Sprite sprite;
-        public List<int> hpList;
-        public List<int> apList;
+        public int hp;
+        public int ap;
         [TextArea] public string story;
         [TextArea] public string skillDescription;
         public List<int> skillValue;
@@ -27,8 +27,8 @@ namespace _01.Scripts._03.Data
                 id = id,
                 name = name,
                 sprite = sprite,
-                hpList = new List<int>(hpList),
-                apList = new List<int>(apList),
+                hp = hp,
+                ap = ap,
                 story = story,
                 skillDescription = ValueFormula.GetFormattedSkillDescription(this, GameManager.Instance.playerData.characterGrade[id]),
                 skillValue = new List<int>(skillValue),

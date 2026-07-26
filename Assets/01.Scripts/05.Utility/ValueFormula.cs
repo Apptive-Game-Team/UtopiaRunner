@@ -42,6 +42,7 @@ namespace _01.Scripts._05.Utility
             return character.skillDescription;
         }
         
+        // 캐릭터 스킬 수치
         public static List<float> GetCharacterSkillValues(CharacterInfo character, int level)
         {
             List<float> ap = new List<float>();
@@ -85,15 +86,30 @@ namespace _01.Scripts._05.Utility
             return value;
         }
 
-        public static float enemyAttackSpeed = 1f;
+        public static float EnemyAttackSpeed = 1f;
         public static void SetEnemyAttackSpeed(float speed)
         {
-            enemyAttackSpeed = speed;
+            EnemyAttackSpeed = speed;
         }
 
+        public const int CharacterMaxLevel = 4;
+        public const int CharacterUpgradeGold = 50;
+        public const int CharacterHpUpgradeAmount = 10;
+        public const int CharacterApUpgradeAmount = 1;
+        
         public static int GetCharacterUpgradeGold(int characterId)
         {
-            return 50 * (GameManager.Instance.playerData.characterGrade[characterId] + 1);
+            return CharacterUpgradeGold * (GameManager.Instance.playerData.characterGrade[characterId] + 1);
+        }
+
+        public static int GetCharacterHp(CharacterInfo characterInfo)
+        {
+            return characterInfo.hp + GameManager.Instance.playerData.characterGrade[characterInfo.id] * CharacterHpUpgradeAmount;
+        }
+
+        public static int GetCharacterAp(CharacterInfo characterInfo)
+        {
+            return characterInfo.ap + GameManager.Instance.playerData.characterGrade[characterInfo.id] * CharacterApUpgradeAmount;
         }
     }
 }

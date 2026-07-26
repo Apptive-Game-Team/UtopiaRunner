@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using _01.Scripts._00.Manager;
 using _01.Scripts._03.Data;
+using _01.Scripts._05.Utility;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -101,8 +102,8 @@ namespace _01.Scripts._04.UI
                 HoverTrigger hover = button.gameObject.AddComponent<HoverTrigger>();
                 hover.SetTooltipData($"{characterInfo.name}     LV{GameManager.Instance.playerData.characterGrade[characterInfo.id]}\n",
                     $"{characterInfo.story}\n\n" + $"{characterInfo.skillDescription}\n\n" +
-                    $"공격력 : {characterInfo.apList[GameManager.Instance.playerData.characterGrade[characterInfo.id]]} " +
-                    $"체력 : {characterInfo.hpList[GameManager.Instance.playerData.characterGrade[characterInfo.id]]}");
+                    $"공격력 : {ValueFormula.GetCharacterAp(characterInfo)} " +
+                    $"체력 : {ValueFormula.GetCharacterHp(characterInfo)}");
 
                 
                 button.onClick.RemoveAllListeners();
