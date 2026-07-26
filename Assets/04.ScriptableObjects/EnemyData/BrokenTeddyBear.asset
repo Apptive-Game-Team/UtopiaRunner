@@ -24,9 +24,9 @@ MonoBehaviour:
     patternPrefab: {fileID: 4974277430462443233, guid: 4b24878321b443649bab5a530c276208, type: 3}
     attackType: 2
     attackDamage: 50
-    cooldown: 12345
+    cooldown: 20
   - patternName: SummonRobots
     patternPrefab: {fileID: 0}
     attackType: 2
     attackDamage: 30
-    cooldown: 1
+    cooldown: 10
