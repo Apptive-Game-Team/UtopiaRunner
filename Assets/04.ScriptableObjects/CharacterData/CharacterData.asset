@@ -16,8 +16,8 @@ MonoBehaviour:
   - id: 0
     name: "\uC774\uCE74\uB8E8\uC2A4"
     sprite: {fileID: 21300000, guid: f500f783385552549b0a7c9941507de2, type: 3}
-    hpList: 64000000
-    apList: 01000000
+    hp: 100
+    ap: 1
     story: "\uC774\uCE74\uB8E8\uC2A4\uB294 \uC5D0\uB374\uC758 \uACBD\uCC30\uC774\uBA70..
       [\uB354\uBCF4\uAE30]"
     skillDescription: "\uC2AC\uB77C\uC774\uB4DC \uBC0F \uC810\uD504 \uC2DC \uBB34\uAE30
@@ -27,8 +27,8 @@ MonoBehaviour:
   - id: 1
     name: "\uC774\uBE0C"
     sprite: {fileID: 21300000, guid: 6c153b44bfad6ce4f86a1cdc5beb9200, type: 3}
-    hpList: 64000000
-    apList: 01000000
+    hp: 100
+    ap: 1
     story: "\uC774\uBE0C\uB294 \uC0AC\uC2E4 \uB0A8\uC790\uC784."
     skillDescription: "\uD0DC\uADF8\uB418\uC5B4 \uB098\uC640 \uC788\uC73C\uBA74 30\uCD08\uB2F9
       \uB2E4\uB978 \uCE90\uB9AD\uD130 {0}\uC529 \uD68C\uBCF5\\n\uB4E4\uC5B4\uAC00
@@ -38,8 +38,8 @@ MonoBehaviour:
   - id: 2
     name: "\uD558\uB2C8"
     sprite: {fileID: 21300000, guid: 77ab6370d323e164fafb73bf6d24fe68, type: 3}
-    hpList: 6e000000
-    apList: 01000000
+    hp: 110
+    ap: 1
     story: "\uC0AC\uB78C \uC544\uB2C8\uC57C \u3160\u3160"
     skillDescription: "3\uB2E8 \uC810\uD504\\n2\uB2E8 \uC810\uD504\uC2DC \uAC8C\uC774\uC9C0\uAC00
       10 \uC313\uC784\\n\uAC8C\uC774\uC9C0 \uD480 \uCC28\uC9D5(100)\uC2DC \uB2E4\uC74C
@@ -49,8 +49,8 @@ MonoBehaviour:
   - id: 3
     name: "\uB9E5"
     sprite: {fileID: 21300000, guid: 948480d69ca544f409cc6597c503b5d1, type: 3}
-    hpList: 6e000000
-    apList: 01000000
+    hp: 110
+    ap: 1
     story: "\uC774 \uB140\uC11D\uC740 \uC8FD\uC2B5\uB2C8\uB2E4."
     skillDescription: " \uC77C\uC815 \uC2DC\uAC04 \uB3D9\uC548 \uD53C\uD574\uB97C
       \uBC1B\uC9C0 \uC54A\uC73C\uBA74 \uC7A5\uC560\uBB3C \uD53C\uACA9\uC744 1\uD68C
@@ -61,8 +61,8 @@ MonoBehaviour:
   - id: 4
     name: "\uBAA8\uD2B8"
     sprite: {fileID: 21300000, guid: 32e704ff56f51a9468ae7746f061b324, type: 3}
-    hpList: 6e000000
-    apList: 01000000
+    hp: 110
+    ap: 1
     story: "\uCC9C\uC7AC \uBC94\uC0DD\uC774 \uC5F0\uAD6C\uC6D0"
     skillDescription: "\uC810\uD504 \uD639\uC740 \uC2AC\uB77C\uC774\uB4DC\uB97C \uD558\uC9C0
       \uC54A\uC740 \uC2DC\uAC04\uB9C8\uB2E4 \uACF5\uACA9\uB825 \uC99D\uAC00 (3\uCD08\uB2F9
@@ -72,8 +72,8 @@ MonoBehaviour:
   - id: 5
     name: "\uCE74\uB85D"
     sprite: {fileID: 21300000, guid: 499ac21c33aeb4348a2cc9fc60f47944, type: 3}
-    hpList: 78000000
-    apList: 01000000
+    hp: 120
+    ap: 1
     story: "\uAC8C\uC774\uC544\uB2D8."
     skillDescription: "\uCCB4\uB825\uC774 30% \uBBF8\uB9CC\uC77C \uB54C \uACF5\uACA9\uB825\uACFC
       \uACF5\uACA9\uC18D\uB3C4\uAC00 {0}% \uC99D\uAC00\uD558\uBA70, {1}% \uBBF8\uB9CC\uC77C
