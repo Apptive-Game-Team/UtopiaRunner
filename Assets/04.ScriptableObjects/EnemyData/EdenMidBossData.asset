@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: EdenMidBossData
   m_EditorClassIdentifier: 
   enemyName: "\uC5D0\uB374 \uC911\uAC04 \uBCF4\uC2A4"
-  healthPoint: 10
+  healthPoint: 20
   patterns:
   - patternName: Bullet
     patternPrefab: {fileID: 7735932227129044953, guid: ab7ceb8e17e6e734ba818ee4e536ee42, type: 3}

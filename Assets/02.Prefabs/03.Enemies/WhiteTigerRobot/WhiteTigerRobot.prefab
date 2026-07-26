@@ -230,6 +230,8 @@ GameObject:
   - component: {fileID: 7369956128582325977}
   - component: {fileID: 4887030059915275242}
   - component: {fileID: -3479380405809789838}
+  - component: {fileID: -6357910631201136256}
+  - component: {fileID: -6604992143165979093}
   m_Layer: 0
   m_Name: WhiteTigerRobot
   m_TagString: Enemy
@@ -424,3 +426,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotOffset: {x: 0, y: -1.8, z: 0}
+--- !u!114 &-6357910631201136256
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7542423489560930485}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd18ca1f7b6acec49b712d37b29c4309, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-6604992143165979093
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7542423489560930485}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1abcb9a52d5b6a459a9ceb12c221420, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

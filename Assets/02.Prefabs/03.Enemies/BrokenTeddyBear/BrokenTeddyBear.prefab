@@ -14,6 +14,8 @@ GameObject:
   - component: {fileID: 7624093827091462715}
   - component: {fileID: 3262117584733779130}
   - component: {fileID: 3186109404412485608}
+  - component: {fileID: 235213565605605378}
+  - component: {fileID: -4898265766923369364}
   m_Layer: 0
   m_Name: BrokenTeddyBear
   m_TagString: Enemy
@@ -207,3 +209,27 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &235213565605605378
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8385841171360301000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd18ca1f7b6acec49b712d37b29c4309, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-4898265766923369364
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8385841171360301000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1abcb9a52d5b6a459a9ceb12c221420, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

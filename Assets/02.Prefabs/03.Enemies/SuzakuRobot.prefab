@@ -138,6 +138,8 @@ GameObject:
   - component: {fileID: 3214257624759498708}
   - component: {fileID: 8275453877815548097}
   - component: {fileID: 1156373018700437792}
+  - component: {fileID: -7310974166373931285}
+  - component: {fileID: 3387829448962232677}
   m_Layer: 0
   m_Name: SuzakuRobot
   m_TagString: Enemy
@@ -282,6 +284,30 @@ MonoBehaviour:
   bossData: {fileID: 11400000, guid: 72f9020856d04804ca8118e7c72e44ee, type: 2}
   maxHp: 0
   currentHp: 0
+--- !u!114 &-7310974166373931285
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1354361046449845958}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd18ca1f7b6acec49b712d37b29c4309, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &3387829448962232677
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1354361046449845958}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1abcb9a52d5b6a459a9ceb12c221420, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2453387267024512906
 GameObject:
   m_ObjectHideFlags: 0

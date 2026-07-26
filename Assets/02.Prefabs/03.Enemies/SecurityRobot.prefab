@@ -207,7 +207,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d37f00774cdb764aa36b7b6559486c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slotOffset: {x: 0, y: 0, z: 0}
+  slotOffset: {x: 0, y: -0.5, z: 0}
 --- !u!1 &7561447132143054881
 GameObject:
   m_ObjectHideFlags: 0

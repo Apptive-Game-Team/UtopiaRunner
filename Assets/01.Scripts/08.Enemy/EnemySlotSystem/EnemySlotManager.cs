@@ -62,7 +62,21 @@ public class EnemySlotManager : MonoBehaviour
         }
     }
 
-    public GameObject SpawnEnemy(GameObject enemyPrefab, EnemyLane lane, bool isSpawnByBoss = false)
+    public GameObject SpawnEnemy(GameObject enemyPrefab, EnemyLane lane)
+    {
+        return SpawnEnemyInternal(enemyPrefab, lane, false);
+    }
+
+    public GameObject SpawnEnemy(GameObject enemyPrefab, EnemyLane lane, bool forceSpawnAtSlot)
+    {
+        return SpawnEnemyInternal(enemyPrefab, lane, forceSpawnAtSlot);
+    }
+
+    private GameObject SpawnEnemyInternal(
+        GameObject enemyPrefab,
+        EnemyLane lane,
+        bool forceSpawnAtSlot
+    )
     {
         if (enemyPrefab == null) return null;
         if (!slotMap.ContainsKey(lane)) return null;
@@ -73,16 +87,31 @@ public class EnemySlotManager : MonoBehaviour
 
         if (laneSlots.Count == 0) return null;
 
-        PushLineLeft(lane);
+        bool pushAllLines =
+            enemyPrefab.GetComponent<BossSpawnPushEnemies>() != null;
 
-        int spawnIndex = isSpawnByBoss ? 1 : 0;
+        bool spawnAtSlot =
+            forceSpawnAtSlot ||
+            enemyPrefab.GetComponent<BossSpawnAtSlot>() != null;
+
+        if (pushAllLines)
+        {
+            PushAllLinesLeft();
+        }
+        else
+        {
+            PushLineLeft(lane);
+        }
+
+        int spawnIndex = 0;
         EnemySlot spawnSlot = laneSlots[spawnIndex];
 
         Vector3 targetPosition =
             spawnSlot.transform.position + GetPrefabSlotOffset(enemyPrefab);
 
-        Vector3 spawnPosition =
-            GetRightOutsideSpawnPosition(targetPosition);
+        Vector3 spawnPosition = spawnAtSlot
+            ? targetPosition
+            : GetRightOutsideSpawnPosition(targetPosition);
 
         GameObject enemyObj = Instantiate(
             enemyPrefab,
@@ -92,16 +121,13 @@ public class EnemySlotManager : MonoBehaviour
 
         SlotEnemy slotEnemy = enemyObj.GetComponent<SlotEnemy>();
 
-        if (!slotEnemy && enemyObj.GetComponent<EnemyHp>())
+        if (slotEnemy == null)
         {
             slotEnemy = enemyObj.AddComponent<SlotEnemy>();
         }
 
-        if (slotEnemy)
-        {
-            slotEnemy.Init(this, lane, spawnIndex);
-            laneEnemies[spawnIndex] = slotEnemy;
-        }
+        slotEnemy.Init(this, lane, spawnIndex);
+        laneEnemies[spawnIndex] = slotEnemy;
 
         if (EveMemoryManager.Instance != null)
         {
@@ -250,5 +276,21 @@ public class EnemySlotManager : MonoBehaviour
         }
 
         return maxCount;
+    }
+
+    public void PushAllLinesLeft()
+    {
+        foreach (EnemyLane lane in enemyMap.Keys)
+        {
+            PushLineLeft(lane);
+        }
+    }
+
+    public void PushAllLinesLeft(int pushCount)
+    {
+        for (int i = 0; i < pushCount; i++)
+        {
+            PushAllLinesLeft();
+        }
     }
 }

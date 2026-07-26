@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 443df75ccac22594991a272f5c267a06, type: 3}
+  m_Name: Stage1_3
+  m_EditorClassIdentifier: 
+  waveTimelines:
+  - {fileID: 11400000, guid: ad11336ae2371c94e9bbd6678d3da97a, type: 2}
+  - {fileID: 11400000, guid: 356800b856e4aef44a6e08933fbef57a, type: 2}
+  - {fileID: 11400000, guid: 51cf178bcfe5d71449e4cf495b6dff73, type: 2}
+  - {fileID: 11400000, guid: 43121b17b0a9c3f45a5775320431df4f, type: 2}
+  - {fileID: 11400000, guid: 778c1d7d93256cd4eb529e90dfb1fb5d, type: 2}

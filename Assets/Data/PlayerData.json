@@ -1,5 +1,5 @@
 {
-    "coin": 100,
+    "coin": 101,
     "currentWorld": 0,
     "currentStage": 0,
     "playTime": 0.0,
@@ -13,23 +13,23 @@
                 },
                 {
                     "stageNum": 1,
-                    "isCleared": false
+                    "isCleared": true
                 },
                 {
                     "stageNum": 2,
-                    "isCleared": false
+                    "isCleared": true
                 },
                 {
                     "stageNum": 3,
-                    "isCleared": false
+                    "isCleared": true
                 },
                 {
                     "stageNum": 4,
-                    "isCleared": false
+                    "isCleared": true
                 },
                 {
                     "stageNum": 5,
-                    "isCleared": false
+                    "isCleared": true
                 }
             ]
         },
@@ -154,17 +154,17 @@
         true,
         true,
         true,
-        false,
-        false,
-        false
+        true,
+        true,
+        true
     ],
     "unlockedWeapons": [
         true,
         true,
-        false,
-        false,
-        false,
-        false
+        true,
+        true,
+        true,
+        true
     ],
     "characterGrade": [
         0,

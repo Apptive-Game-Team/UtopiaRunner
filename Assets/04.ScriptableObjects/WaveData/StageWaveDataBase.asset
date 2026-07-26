@@ -15,10 +15,19 @@ MonoBehaviour:
   stageWaveInfos:
   - worldNum: 0
     stageNum: 0
-    stageWaveData: {fileID: 11400000, guid: e8e4ffc1934293b4da4d897c5f0d55c3, type: 2}
+    stageWaveData: {fileID: 11400000, guid: 4c0c0cde4a3235247b15a7057fdca5f7, type: 2}
   - worldNum: 0
     stageNum: 1
-    stageWaveData: {fileID: 11400000, guid: 6c29d0f33cc1c5843856ed7f0dc64b18, type: 2}
+    stageWaveData: {fileID: 11400000, guid: d63a18ba61ac5ae43a2def3495db3494, type: 2}
+  - worldNum: 0
+    stageNum: 2
+    stageWaveData: {fileID: 11400000, guid: 311cf466e13f4c0468f40bf6a419e956, type: 2}
+  - worldNum: 0
+    stageNum: 3
+    stageWaveData: {fileID: 11400000, guid: 87580aeaafff00b46973a029422cfcfa, type: 2}
+  - worldNum: 0
+    stageNum: 4
+    stageWaveData: {fileID: 11400000, guid: de3650a0a24026649ad899ff536d2b9f, type: 2}
   - worldNum: 0
     stageNum: 5
     stageWaveData: {fileID: 11400000, guid: 7ea35909d31cf394da3e237d6064b0ae, type: 2}
